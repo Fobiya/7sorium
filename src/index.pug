@@ -1,0 +1,373 @@
+doctype
+
+html(lang='en')
+  head
+
+    meta(charset='UTF-8')
+    //
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    title Indexer
+    
+    link(rel='apple-touch-icon', sizes='57x57', href='assets/favicons/apple-icon-57x57.png')
+    link(rel='apple-touch-icon', sizes='60x60', href='assets/favicons/apple-icon-60x60.png')
+    link(rel='apple-touch-icon', sizes='72x72', href='assets/favicons/apple-icon-72x72.png')
+    link(rel='apple-touch-icon', sizes='76x76', href='assets/favicons/apple-icon-76x76.png')
+    link(rel='apple-touch-icon', sizes='114x114', href='assets/favicons/apple-icon-114x114.png')
+    link(rel='apple-touch-icon', sizes='120x120', href='assets/favicons/apple-icon-120x120.png')
+    link(rel='apple-touch-icon', sizes='144x144', href='assets/favicons/apple-icon-144x144.png')
+    link(rel='apple-touch-icon', sizes='152x152', href='assets/favicons/apple-icon-152x152.png')
+    link(rel='apple-touch-icon', sizes='180x180', href='assets/favicons/apple-icon-180x180.png')
+    link(rel='icon', type='image/png', sizes='192x192', href='assets/favicons/android-icon-192x192.png')
+    link(rel='icon', type='image/png', sizes='32x32', href='assets/favicons/favicon-32x32.png')
+    link(rel='icon', type='image/png', sizes='96x96', href='assets/favicons/favicon-96x96.png')
+    link(rel='icon', type='image/png', sizes='16x16', href='assets/favicons/favicon-16x16.png')
+    link(rel='manifest', href='assets/favicons/manifest.json')
+    meta(name='msapplication-TileColor', content='#ffffff')
+    meta(name='msapplication-TileImage', content='assets/favicons/ms-icon-144x144.png')
+    meta(name='theme-color', content='#ffffff')
+    
+    //link(href='assets/favicons/favicon.ico', rel='shortcut icon')
+    //link(href='assets/favicons/apple-touch-icon.png', rel='apple-touch-icon', sizes='180x80')
+    //link(href='assets/favicons/favicon-64x64.png', rel='icon', sizes='64x64', type='image/png')
+    //link(href='assets/favicons/favicon-48x48.png', rel='icon', sizes='48x48', type='image/png')
+    //link(href='assets/favicons/favicon-32x32.png', rel='icon', sizes='32x32', type='image/png')
+    //link(href='assets/favicons/favicon-16x16.png', rel='icon', sizes='16x16', type='image/png')
+    // <link href="favicons/site.webmanifest" rel="manifest" />
+    // Bulma
+    //link(rel='stylesheet', href='/assets/css/bulma.min.css')
+    // jQuery
+    // <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    // <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" ></script>
+    // dataTables
+    // <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bulma.min.css">
+    //
+      <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bulma.min.js"></script>
+    // App
+    script(src='https://kit.fontawesome.com/a07277d3f2.js', crossorigin='anonymous')
+    //link(rel='stylesheet', href='http://213.133.110.214:6060/assets/style.css')
+    script(type='text/javascript', src='assets/jquery-3.6.1.min.js')
+    script(type='text/javascript', src='assets/func.js')
+    script(src='https://d3js.org/d3.v4.js')
+    script(src='https://d3js.org/d3-scale-chromatic.v1.min.js')
+
+  body
+    #loader.hidden
+      .loading
+        .loading__ring
+          svg(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', version='1.1', x='0px', y='0px', viewbox='0 0 100 100', style='enable-background:new 0 0 100 100;', xml:space='preserve')
+            path(d='M85.5,42c-0.2-0.8-0.5-1.7-0.8-2.5c-0.3-0.9-0.7-1.6-1-2.3c-0.3-0.7-0.6-1.3-1-1.9c0.3,0.5,0.5,1.1,0.8,1.7  c0.2,0.7,0.6,1.5,0.8,2.3s0.5,1.7,0.8,2.5c0.8,3.5,1.3,7.5,0.8,12c-0.4,4.3-1.8,9-4.2,13.4c-2.4,4.2-5.9,8.2-10.5,11.2  c-1.1,0.7-2.2,1.5-3.4,2c-0.5,0.2-1.2,0.6-1.8,0.8s-1.3,0.5-1.9,0.8c-2.6,1-5.3,1.7-8.1,1.8l-1.1,0.1L53.8,84c-0.7,0-1.4,0-2.1,0  c-1.4-0.1-2.9-0.1-4.2-0.5c-1.4-0.1-2.8-0.6-4.1-0.8c-1.4-0.5-2.7-0.9-3.9-1.5c-1.2-0.6-2.4-1.2-3.7-1.9c-0.6-0.3-1.2-0.7-1.7-1.1  l-0.8-0.6c-0.3-0.1-0.6-0.4-0.8-0.6l-0.8-0.6L31.3,76l-0.2-0.2L31,75.7l-0.1-0.1l0,0l-1.5-1.5c-1.2-1-1.9-2.1-2.7-3.1  c-0.4-0.4-0.7-1.1-1.1-1.7l-1.1-1.7c-0.3-0.6-0.6-1.2-0.9-1.8c-0.2-0.5-0.6-1.2-0.8-1.8c-0.4-1.2-1-2.4-1.2-3.7  c-0.2-0.6-0.4-1.2-0.5-1.9c-0.1-0.6-0.2-1.2-0.3-1.8c-0.3-1.2-0.3-2.4-0.4-3.7c-0.1-1.2,0-2.5,0.1-3.7c0.2-1.2,0.3-2.4,0.6-3.5  c0.1-0.6,0.3-1.1,0.4-1.7l0.1-0.8l0.3-0.8c1.5-4.3,3.8-8,6.5-11c0.8-0.8,1.4-1.5,2.1-2.1c0.9-0.9,1.4-1.3,2.2-1.8  c1.4-1.2,2.9-2,4.3-2.8c2.8-1.5,5.5-2.3,7.7-2.8s4-0.7,5.2-0.6c0.6-0.1,1.1,0,1.4,0s0.4,0,0.4,0h0.1c2.7,0.1,5-2.2,5-5  c0.1-2.7-2.2-5-5-5c-0.2,0-0.2,0-0.3,0c0,0-0.2,0.1-0.6,0.1c-0.4,0-1,0-1.8,0.1c-1.6,0.1-4,0.4-6.9,1.2c-2.9,0.8-6.4,2-9.9,4.1  c-1.8,1-3.6,2.3-5.4,3.8C26,21.4,25,22.2,24.4,23c-0.2,0.2-0.4,0.4-0.6,0.6c-0.2,0.2-0.5,0.4-0.6,0.7c-0.5,0.4-0.8,0.9-1.3,1.4  c-3.2,3.9-5.9,8.8-7.5,14.3l-0.3,1l-0.2,1.1c-0.1,0.7-0.3,1.4-0.4,2.1c-0.3,1.5-0.4,2.9-0.5,4.5c0,1.5-0.1,3,0.1,4.5  c0.2,1.5,0.2,3,0.6,4.6c0.1,0.7,0.3,1.5,0.4,2.3c0.2,0.8,0.5,1.5,0.7,2.3c0.4,1.6,1.1,3,1.7,4.4c0.3,0.7,0.7,1.4,1.1,2.1  c0.4,0.8,0.8,1.4,1.2,2.1c0.5,0.7,0.9,1.4,1.4,2s0.9,1.3,1.5,1.9c1.1,1.3,2.2,2.7,3.3,3.5l1.7,1.6c0,0,0.1,0.1,0.1,0.1c0,0,0,0,0,0  c0,0,0,0,0,0l0.1,0.1l0.1,0.1h0.2l0.5,0.4l1,0.7c0.4,0.2,0.6,0.5,1,0.7l1.1,0.6c0.8,0.4,1.4,0.9,2.1,1.2c1.4,0.7,2.9,1.5,4.4,2  c1.5,0.7,3.1,1,4.6,1.5c1.5,0.3,3.1,0.7,4.7,0.8c1.6,0.2,3.1,0.2,4.7,0.2c0.8,0,1.6-0.1,2.4-0.1l1.2-0.1l1.1-0.1  c3.1-0.4,6.1-1.3,8.9-2.4c0.8-0.3,1.4-0.6,2.1-0.9s1.3-0.7,2-1.1c1.3-0.7,2.6-1.7,3.7-2.5c0.5-0.4,1-0.9,1.6-1.3l0.8-0.6l0.2-0.2  c0,0,0.1-0.1,0.1-0.1c0.1-0.1,0,0,0,0v0.1l0.1-0.1l0.4-0.4c0.5-0.5,1-1,1.5-1.5c0.3-0.3,0.5-0.5,0.8-0.8l0.7-0.8  c0.9-1.1,1.8-2.2,2.5-3.3c0.4-0.6,0.7-1.1,1.1-1.7c0.3-0.7,0.6-1.2,0.9-1.8c2.4-4.9,3.5-9.8,3.7-14.4C87.3,49.7,86.6,45.5,85.5,42z')
+        .loading__ring
+          svg(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', version='1.1', x='0px', y='0px', viewbox='0 0 100 100', style='enable-background:new 0 0 100 100;', xml:space='preserve')
+            path(d='M85.5,42c-0.2-0.8-0.5-1.7-0.8-2.5c-0.3-0.9-0.7-1.6-1-2.3c-0.3-0.7-0.6-1.3-1-1.9c0.3,0.5,0.5,1.1,0.8,1.7  c0.2,0.7,0.6,1.5,0.8,2.3s0.5,1.7,0.8,2.5c0.8,3.5,1.3,7.5,0.8,12c-0.4,4.3-1.8,9-4.2,13.4c-2.4,4.2-5.9,8.2-10.5,11.2  c-1.1,0.7-2.2,1.5-3.4,2c-0.5,0.2-1.2,0.6-1.8,0.8s-1.3,0.5-1.9,0.8c-2.6,1-5.3,1.7-8.1,1.8l-1.1,0.1L53.8,84c-0.7,0-1.4,0-2.1,0  c-1.4-0.1-2.9-0.1-4.2-0.5c-1.4-0.1-2.8-0.6-4.1-0.8c-1.4-0.5-2.7-0.9-3.9-1.5c-1.2-0.6-2.4-1.2-3.7-1.9c-0.6-0.3-1.2-0.7-1.7-1.1  l-0.8-0.6c-0.3-0.1-0.6-0.4-0.8-0.6l-0.8-0.6L31.3,76l-0.2-0.2L31,75.7l-0.1-0.1l0,0l-1.5-1.5c-1.2-1-1.9-2.1-2.7-3.1  c-0.4-0.4-0.7-1.1-1.1-1.7l-1.1-1.7c-0.3-0.6-0.6-1.2-0.9-1.8c-0.2-0.5-0.6-1.2-0.8-1.8c-0.4-1.2-1-2.4-1.2-3.7  c-0.2-0.6-0.4-1.2-0.5-1.9c-0.1-0.6-0.2-1.2-0.3-1.8c-0.3-1.2-0.3-2.4-0.4-3.7c-0.1-1.2,0-2.5,0.1-3.7c0.2-1.2,0.3-2.4,0.6-3.5  c0.1-0.6,0.3-1.1,0.4-1.7l0.1-0.8l0.3-0.8c1.5-4.3,3.8-8,6.5-11c0.8-0.8,1.4-1.5,2.1-2.1c0.9-0.9,1.4-1.3,2.2-1.8  c1.4-1.2,2.9-2,4.3-2.8c2.8-1.5,5.5-2.3,7.7-2.8s4-0.7,5.2-0.6c0.6-0.1,1.1,0,1.4,0s0.4,0,0.4,0h0.1c2.7,0.1,5-2.2,5-5  c0.1-2.7-2.2-5-5-5c-0.2,0-0.2,0-0.3,0c0,0-0.2,0.1-0.6,0.1c-0.4,0-1,0-1.8,0.1c-1.6,0.1-4,0.4-6.9,1.2c-2.9,0.8-6.4,2-9.9,4.1  c-1.8,1-3.6,2.3-5.4,3.8C26,21.4,25,22.2,24.4,23c-0.2,0.2-0.4,0.4-0.6,0.6c-0.2,0.2-0.5,0.4-0.6,0.7c-0.5,0.4-0.8,0.9-1.3,1.4  c-3.2,3.9-5.9,8.8-7.5,14.3l-0.3,1l-0.2,1.1c-0.1,0.7-0.3,1.4-0.4,2.1c-0.3,1.5-0.4,2.9-0.5,4.5c0,1.5-0.1,3,0.1,4.5  c0.2,1.5,0.2,3,0.6,4.6c0.1,0.7,0.3,1.5,0.4,2.3c0.2,0.8,0.5,1.5,0.7,2.3c0.4,1.6,1.1,3,1.7,4.4c0.3,0.7,0.7,1.4,1.1,2.1  c0.4,0.8,0.8,1.4,1.2,2.1c0.5,0.7,0.9,1.4,1.4,2s0.9,1.3,1.5,1.9c1.1,1.3,2.2,2.7,3.3,3.5l1.7,1.6c0,0,0.1,0.1,0.1,0.1c0,0,0,0,0,0  c0,0,0,0,0,0l0.1,0.1l0.1,0.1h0.2l0.5,0.4l1,0.7c0.4,0.2,0.6,0.5,1,0.7l1.1,0.6c0.8,0.4,1.4,0.9,2.1,1.2c1.4,0.7,2.9,1.5,4.4,2  c1.5,0.7,3.1,1,4.6,1.5c1.5,0.3,3.1,0.7,4.7,0.8c1.6,0.2,3.1,0.2,4.7,0.2c0.8,0,1.6-0.1,2.4-0.1l1.2-0.1l1.1-0.1  c3.1-0.4,6.1-1.3,8.9-2.4c0.8-0.3,1.4-0.6,2.1-0.9s1.3-0.7,2-1.1c1.3-0.7,2.6-1.7,3.7-2.5c0.5-0.4,1-0.9,1.6-1.3l0.8-0.6l0.2-0.2  c0,0,0.1-0.1,0.1-0.1c0.1-0.1,0,0,0,0v0.1l0.1-0.1l0.4-0.4c0.5-0.5,1-1,1.5-1.5c0.3-0.3,0.5-0.5,0.8-0.8l0.7-0.8  c0.9-1.1,1.8-2.2,2.5-3.3c0.4-0.6,0.7-1.1,1.1-1.7c0.3-0.7,0.6-1.2,0.9-1.8c2.4-4.9,3.5-9.8,3.7-14.4C87.3,49.7,86.6,45.5,85.5,42z')
+
+      
+    header
+      a.logo(href='javascript:;') 
+        img(src='assets/img/logo.svg', alt='logo')
+      .login
+        a.setting(href='/login.html')
+          img(src='assets/img/icon__setin.svg', alt='icon__setin')
+          
+        .box__avatar
+          .element 2
+          a(href='/login.html')
+            img(src='assets/img/avatar.png', alt='avatar') 
+      
+
+    section.section__dashboard
+      .container.pinned
+        h3.title.pinned Pinned
+        .pinned_link
+          a.link__(href='javascript:;') 
+            img.icon__(src='assets/img/icon__insta.svg', alt='icon__insta')
+          a.link__(href='javascript:;') 
+            img.icon__(src='assets/img/icon__yout.svg', alt='icon__yout')
+          a.link__(href='javascript:;') 
+            img.icon__(src='assets/img/icon__netfl.svg', alt='icon__netfl')
+          a.link__(href='javascript:;') 
+            img.icon__(src='assets/img/icon__link.svg', alt='icon__link')
+          a.link__(href='javascript:;') 
+            img.icon__(src='assets/img/icon__face.svg', alt='icon__face')
+          a.link__(href='javascript:;') 
+            img.icon__(src='assets/img/icon__wsj.svg', alt='icon__wsj')
+          a.link__(href='javascript:;') 
+            img.icon__(src='assets/img/icon__twit.svg', alt='icon__twit')
+          a.link__(href='javascript:;') 
+            img.icon__(src='assets/img/icon__tikt.svg', alt='icon__tikt')
+        
+        
+      .container
+ 
+      
+        form.search__form
+          .box__search
+            .search__input
+              input#search_query.input.tags_input(type='text', placeholder='', value='')
+              button#submit-search
+            #filter-search.filter-search.none
+
+              .columns
+                .column
+                  label(for='date_from') Date From:
+                  .control
+                    input#date_from(type='date', onchange='onChangeFromTime(event);')
+                .column
+                  label(for='date_to') Date To:
+                  .control
+                    input#date_to(type='date', onchange='onChangeToTime(event);')
+                .column
+                  label(for='select_Period') Period:
+                  .control
+                    select#select_Period
+                      option#quarter(value='quarter') quarter
+                      option#month(value='month') month
+                      option#week(value='week') week
+                      option#day(value='day') day
+                      
+              .columns.col_two
+                .column
+                  label(for='select_host') Site host:
+                  .control
+                    select#select_host
+                .column
+
+                  .control
+                    label(for='author') Author:
+                    input#author(type='text' placeholder='Enter an author')
+
+
+
+
+              .columns
+                .column
+                  
+                  .control
+                    label(for='blank_search') blank search:
+                    input#blank_search(type='checkbox', name='blank_search')
+                    i(checkbox) 
+                .column
+                  label(for='search_limit') Limit:
+                  .control
+                    input#search_limit.input(type='number', placeholder='100')
+
+
+                    
+                    
+                    
+              .box__button
+                button.blue#submitblue-search Search
+                a.blue__border.close(href='javascript:;') Clear all
+                
+            
+        a.search__advanced(href='javascript:;') Advanced search
+
+        .column.none
+          button#submit-word-graph-search.button.is-primary Word Graph
+
+          button#btnShowSearchOptions.button.is-rounded Search options
+
+    section.section__news
+      .container
+      
+        .box_last_news
+          h3.title Latest news
+          ul.list
+            li
+              a(href='javascript:;') Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, ac ornare nunc adipiscing elit. Nunc, ac ornare nunc
+              .box_
+                span.autor The Guardian
+                span.time 1h ago
+            li
+              a(href='javascript:;') Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, ac ornare nunc adipiscing elit. Nunc, ac ornare nunc
+              .box_
+                span.autor The Guardian
+                span.time 10h ago
+            li
+              a(href='javascript:;') Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, ac ornare nunc adipiscing elit. Nunc, ac ornare nunc
+              .box_
+                span.autor The Guardian
+                span.time 8h ago
+        
+        .box_set
+          .box__two.blue
+            a(href='javascript:;')
+              img(src='assets/img/section__news_winst.png', alt='section__news_winst')
+          
+          .box__.grey
+            a(href='javascript:;')
+              img(src='assets/img/section__news_search.png', alt='section__news_search')
+          .box__
+            a(href='javascript:;')
+              img(src='assets/img/section__news_slider.png', alt='section__news_slider')
+              
+          .box__two.old-flax
+            a.text(href='javascript:;') 20 tips for feeling good throughout the day
+
+          
+          
+        .box_popular_news.slate-blue
+          h3.title Latest news
+          ul.list
+            li
+              .box__img
+                a(href='javascript:;')
+                  img(src='assets/img/section__news_post.png', alt='section__news_post')
+              .box__content
+                a(href='javascript:;') Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, ac ornare nunc urna eget semper morbi vel. Aliquet vel Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, ac ornare nunc urna eget semper morbi vel. Aliquet vel
+                .box_
+                  span.autor The Guardian
+                  span.time 1h ago
+  
+            li
+              .box__img
+                a(href='javascript:;')
+                  img(src='assets/img/section__news_post.png', alt='section__news_post')
+              .box__content
+                a(href='javascript:;') Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, ac ornare nunc urna eget semper morbi vel. Aliquet vel Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, ac ornare nunc urna eget semper morbi vel. Aliquet vel
+                .box_
+                  span.autor The Guardian
+                  span.time 1h ago
+  
+            li
+              .box__img
+                a(href='javascript:;')
+                  img(src='assets/img/section__news_post.png', alt='section__news_post')
+              .box__content
+                a(href='javascript:;') Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, ac ornare nunc urna eget semper morbi vel. Aliquet vel Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, ac ornare nunc urna eget semper morbi vel. Aliquet vel
+                .box_
+                  span.autor The Guardian
+                  span.time 1h ago
+  
+            li
+              .box__img
+                a(href='javascript:;')
+                  img(src='assets/img/section__news_post.png', alt='section__news_post')
+              .box__content
+                a(href='javascript:;') Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, ac ornare nunc urna eget semper morbi vel. Aliquet vel Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, ac ornare nunc urna eget semper morbi vel. Aliquet vel
+                .box_
+                  span.autor The Guardian
+                  span.time 1h ago
+  
+  
+        
+    section.section__tab.none
+      .container
+        .box__tab
+          a.tab.active(href='javascript:;' data-tab="1" data-name='all')
+            svg(width='16', height='17', viewbox='0 0 16 17', fill='none', xmlns='http://www.w3.org/2000/svg')
+              path(d='M7.66683 14.5002C11.1646 14.5002 14.0002 11.6646 14.0002 8.16683C14.0002 4.66903 11.1646 1.8335 7.66683 1.8335C4.16903 1.8335 1.3335 4.66903 1.3335 8.16683C1.3335 11.6646 4.16903 14.5002 7.66683 14.5002Z', stroke='#B1B5C4', stroke-width='1.5', stroke-linecap='round', stroke-linejoin='round')
+              path(d='M14.6668 15.1668L13.3335 13.8335', stroke='#B1B5C4', stroke-width='1.5', stroke-linecap='round', stroke-linejoin='round')
+
+            | All
+            
+          a.tab(href='javascript:;' data-tab="2" data-name='phtoes')
+            svg(width='16', height='17', viewbox='0 0 16 17', fill='none', xmlns='http://www.w3.org/2000/svg')
+              path(d='M1.72003 13.1735L1.7067 13.1868C1.5267 12.7935 1.41337 12.3468 1.3667 11.8535C1.41337 12.3402 1.54003 12.7802 1.72003 13.1735Z', fill='#B1B5C4')
+              path(d='M6.00024 7.41992C6.87653 7.41992 7.58691 6.70954 7.58691 5.83325C7.58691 4.95696 6.87653 4.24658 6.00024 4.24658C5.12395 4.24658 4.41357 4.95696 4.41357 5.83325C4.41357 6.70954 5.12395 7.41992 6.00024 7.41992Z', fill='#B1B5C4')
+              path(d='M10.7935 1.8335H5.20683C2.78016 1.8335 1.3335 3.28016 1.3335 5.70683V11.2935C1.3335 12.0202 1.46016 12.6535 1.70683 13.1868C2.28016 14.4535 3.50683 15.1668 5.20683 15.1668H10.7935C13.2202 15.1668 14.6668 13.7202 14.6668 11.2935V9.76683V5.70683C14.6668 3.28016 13.2202 1.8335 10.7935 1.8335ZM13.5802 8.8335C13.0602 8.38683 12.2202 8.38683 11.7002 8.8335L8.92683 11.2135C8.40683 11.6602 7.56683 11.6602 7.04683 11.2135L6.82016 11.0268C6.34683 10.6135 5.5935 10.5735 5.06016 10.9335L2.56683 12.6068C2.42016 12.2335 2.3335 11.8002 2.3335 11.2935V5.70683C2.3335 3.82683 3.32683 2.8335 5.20683 2.8335H10.7935C12.6735 2.8335 13.6668 3.82683 13.6668 5.70683V8.90683L13.5802 8.8335Z', fill='#B1B5C4')
+            | Phtoes
+
+          a.tab(href='javascript:;' data-tab="3" data-name='phtoes')
+            svg(width='16', height='17', viewbox='0 0 16 17', fill='none', xmlns='http://www.w3.org/2000/svg')
+              path(d='M7.50016 5.74023H1.3335V11.2936C1.3335 11.3336 1.3335 11.3736 1.34016 11.4069H7.50016V5.74023Z', fill='#B1B5C4')
+              path(d='M5.12646 4.74016H7.4998V1.8335H5.14646V4.66016C5.14646 4.68683 5.13313 4.7135 5.12646 4.74016Z', fill='#B1B5C4')
+              path(d='M4.14659 4.65994V1.93994C2.66659 2.24661 1.69992 3.23327 1.41992 4.73994H4.15992C4.15325 4.71327 4.14659 4.68661 4.14659 4.65994Z', fill='#B1B5C4')
+              path(d='M10.8133 1.8335H8.5V4.74016H10.8133V1.8335Z', fill='#B1B5C4')
+              path(d='M11.8066 4.73977H14.58C14.3 3.21977 13.32 2.22644 11.8133 1.93311V4.71977C11.8133 4.72644 11.8066 4.73311 11.8066 4.73977Z', fill='#B1B5C4')
+              path(d='M11.8135 15.0667C13.2735 14.7801 14.2335 13.8467 14.5468 12.4067H11.8135V15.0667Z', fill='#B1B5C4')
+              path(d='M10.8133 12.4067H8.5V15.1667H10.8133V12.4067Z', fill='#B1B5C4')
+              path(d='M8.5 11.4069H14.66C14.6667 11.3736 14.6667 11.3336 14.6667 11.2936V5.74023H8.5V11.4069Z', fill='#B1B5C4')
+              path(d='M7.49982 12.4067H5.14648V15.1667H7.49982V12.4067Z', fill='#B1B5C4')
+              path(d='M1.45312 12.4067C1.76646 13.8334 2.71312 14.7667 4.14646 15.0601V12.4067H1.45312Z', fill='#B1B5C4')
+
+            | Video
+                  
+
+          a.tab(href='javascript:;' data-tab="4" data-name='maps')
+            svg(width='16', height='17', viewbox='0 0 16 17', fill='none', xmlns='http://www.w3.org/2000/svg')
+              path(d='M7.00683 7.98016L5.54016 2.0935C5.50683 1.94016 5.36683 1.8335 5.20683 1.8335C3.06683 1.8335 1.3335 3.56683 1.3335 5.70683V9.50683C1.3335 9.7335 1.5535 9.90016 1.7735 9.8335L6.7735 8.38683C6.94683 8.34016 7.0535 8.16016 7.00683 7.98016Z', fill='#B1B5C4')
+              path(d='M7.4135 9.62023C7.36683 9.43356 7.1735 9.32023 6.98683 9.37356L1.58016 10.9469C1.4335 10.9936 1.3335 11.1269 1.3335 11.2802V11.2936C1.3335 13.4336 3.06683 15.1669 5.20683 15.1669H8.3535C8.5735 15.1669 8.74016 14.9602 8.68683 14.7402L7.4135 9.62023Z', fill='#B1B5C4')
+              path(d='M10.7934 1.8335H6.96005C6.74005 1.8335 6.57338 2.04016 6.62672 2.26016L9.78672 14.9068C9.82672 15.0602 9.96005 15.1668 10.12 15.1668H10.7867C12.9334 15.1668 14.6667 13.4335 14.6667 11.2935V5.70683C14.6667 3.56683 12.9334 1.8335 10.7934 1.8335Z', fill='#B1B5C4')
+            | Maps
+            
+                  
+
+          a.tab(href='javascript:;' data-tab="5" data-name='news')
+            svg(width='16', height='17', viewbox='0 0 16 17', fill='none', xmlns='http://www.w3.org/2000/svg')
+              path(d='M10.7935 1.8335H5.20683C2.78016 1.8335 1.3335 3.28016 1.3335 5.70683V11.2868C1.3335 13.7202 2.78016 15.1668 5.20683 15.1668H10.7868C13.2135 15.1668 14.6602 13.7202 14.6602 11.2935V5.70683C14.6668 3.28016 13.2202 1.8335 10.7935 1.8335ZM4.3335 8.88016H6.18016C6.4535 8.88016 6.68016 9.10683 6.68016 9.38016C6.68016 9.6535 6.4535 9.88016 6.18016 9.88016H4.3335C4.06016 9.88016 3.8335 9.6535 3.8335 9.38016C3.8335 9.10683 4.06016 8.88016 4.3335 8.88016ZM8.64683 12.3868H4.3335C4.06016 12.3868 3.8335 12.1602 3.8335 11.8868C3.8335 11.6135 4.06016 11.3868 4.3335 11.3868H8.64683C8.92016 11.3868 9.14683 11.6135 9.14683 11.8868C9.14683 12.1602 8.92683 12.3868 8.64683 12.3868ZM11.6668 12.3868H10.4335C10.1602 12.3868 9.9335 12.1602 9.9335 11.8868C9.9335 11.6135 10.1602 11.3868 10.4335 11.3868H11.6668C11.9402 11.3868 12.1668 11.6135 12.1668 11.8868C12.1668 12.1602 11.9402 12.3868 11.6668 12.3868ZM11.6668 9.88016H7.98016C7.70683 9.88016 7.48016 9.6535 7.48016 9.38016C7.48016 9.10683 7.70683 8.88016 7.98016 8.88016H11.6668C11.9402 8.88016 12.1668 9.10683 12.1668 9.38016C12.1668 9.6535 11.9402 9.88016 11.6668 9.88016Z', fill='#B1B5C4')
+            | News
+            
+            
+        .box__style__list
+          a.tab.active(href='javascript:;' data-tab="1" data-name='list')
+            svg(width='24', height='24', viewbox='0 0 24 24', fill='none', xmlns='http://www.w3.org/2000/svg')
+              rect(x='0.5', y='0.5', width='23', height='23', rx='2.5', fill='#DFE8F0', stroke='#D6DDEA')
+              rect(x='4', y='6', width='16.4211', height='2', rx='1', fill='#B7BBCC')
+              rect(x='4', y='11', width='16.4211', height='2', rx='1', fill='#B7BBCC')
+              rect(x='4', y='16', width='16.4211', height='2', rx='1', fill='#B7BBCC')
+
+          a.tab(href='javascript:;' data-tab="2" data-name='image')
+            svg(width='24', height='24', viewbox='0 0 24 24', fill='none', xmlns='http://www.w3.org/2000/svg')
+              rect(x='0.5', y='0.5', width='23', height='23', rx='2.5', fill='#DFE8F0', stroke='#D6DDEA')
+              rect(x='10', y='6', width='10', height='2', rx='1', fill='#B7BBCC')
+              rect(x='4', y='6', width='4', height='3', fill='#B7BBCC')
+              rect(x='10', y='11', width='10', height='2', rx='1', fill='#B7BBCC')
+              rect(x='4', y='11', width='4', height='3', fill='#B7BBCC')
+              rect(x='10', y='16', width='10', height='2', rx='1', fill='#B7BBCC')
+              rect(x='4', y='16', width='4', height='3', fill='#B7BBCC')
+
+            
+    section.section__hostGroups
+      #graph-container.container
+        #graph-response.hidden 
+        #host-groups.hostGroups 
+        
+    section.section__search__list.none
+      .container
+        #search-response
+          .block__.not__see
+            .post__preview
+              a(href='javascript:;')
+                img(src='assets/img/post__img.png', alt='post__img')
+            .box_response__
+              a.result-url(href='https://www.jutarnji.hr/domidizajn/d-d-vrt/najfinije-najplavije-i-najmocnije-bobice-cuvaju-mladost-mozga-poboljsavaju-zdravlje-srca-15250317')
+                | https://www.jutarnji.hr/domidizajn/d-d-vrt/najfinije-najplavije-i-najmocnije-bobice-cuvaju-mladost-mozga-poboljsavaju-zdravlje-srca-15250317
+                  
+              a.result-title(href='https://www.jutarnji.hr/domidizajn/d-d-vrt/najfinije-najplavije-i-najmocnije-bobice-cuvaju-mladost-mozga-poboljsavaju-zdravlje-srca-15250317')
+                | Najfinije, najplavije i najmo&cacute;nije bobice: &Ccaron;uvaju mladost mozga, pobolj&scaron;avaju zdravlje srcaNajfinije, najplavije i najmo&cacute;nije bobice: &Ccaron;uvaju mladost mozga, pobolj&scaron;avaju zdravlje srcaNajfinije, najplavije i najmo&cacute;nije bobice: &Ccaron;uvaju mladost mozga, pobolj&scaron;avaju zdravlje srca
+                
+                
+
+
+              .result-quote
+                | Najfinije, najplavije i najmo&cacute;nije bobice: &Ccaron;uvaju mladost mozga, pobolj&scaron;avaju zdravlje srcaNajfinije, najplavije i najmo&cacute;nije bobice: &Ccaron;uvaju mladost mozga, pobolj&scaron;avaju zdravlje srcaNajfinije, najplavije i najmo&cacute;nije bobice: &Ccaron;uvaju mladost mozga, pobolj&scaron;avaju zdravlje srca
+              .box__bottom
+                .box__navigation
+                  a.icon__.like(href='javascript:;')
+                  a.icon__.dislike(href='javascript:;')
+                  a.icon__.star(href='javascript:;')
+                  a.icon__.broom(href='javascript:;')
+
+                .result-date 21.9.2022 12:42:52
+
+                  
+    section#resize-icon.container.to_right.none
+      i#max-size.fa-solid.fa-maximize.hidden(onclick='setSize()')
+      i#min-size.fa-solid.fa-minimize.hidden(onclick='setSize()')
+    // <button class="button" id="chart-resize" >Resize</button>
+    
+    
+    
+
+        
+        
+
+
+
+
+
+    script(src='https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js')
+
+

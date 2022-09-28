@@ -1,0 +1,95 @@
+doctype
+
+html(lang='en')
+  head
+
+    meta(charset='UTF-8')
+    //
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    title Indexer
+    
+    link(rel='apple-touch-icon', sizes='57x57', href='assets/favicons/apple-icon-57x57.png')
+    link(rel='apple-touch-icon', sizes='60x60', href='assets/favicons/apple-icon-60x60.png')
+    link(rel='apple-touch-icon', sizes='72x72', href='assets/favicons/apple-icon-72x72.png')
+    link(rel='apple-touch-icon', sizes='76x76', href='assets/favicons/apple-icon-76x76.png')
+    link(rel='apple-touch-icon', sizes='114x114', href='assets/favicons/apple-icon-114x114.png')
+    link(rel='apple-touch-icon', sizes='120x120', href='assets/favicons/apple-icon-120x120.png')
+    link(rel='apple-touch-icon', sizes='144x144', href='assets/favicons/apple-icon-144x144.png')
+    link(rel='apple-touch-icon', sizes='152x152', href='assets/favicons/apple-icon-152x152.png')
+    link(rel='apple-touch-icon', sizes='180x180', href='assets/favicons/apple-icon-180x180.png')
+    link(rel='icon', type='image/png', sizes='192x192', href='assets/favicons/android-icon-192x192.png')
+    link(rel='icon', type='image/png', sizes='32x32', href='assets/favicons/favicon-32x32.png')
+    link(rel='icon', type='image/png', sizes='96x96', href='assets/favicons/favicon-96x96.png')
+    link(rel='icon', type='image/png', sizes='16x16', href='assets/favicons/favicon-16x16.png')
+    link(rel='manifest', href='assets/favicons/manifest.json')
+    meta(name='msapplication-TileColor', content='#ffffff')
+    meta(name='msapplication-TileImage', content='assets/favicons/ms-icon-144x144.png')
+    meta(name='theme-color', content='#ffffff')
+    
+    //link(href='assets/favicons/favicon.ico', rel='shortcut icon')
+    //link(href='assets/favicons/apple-touch-icon.png', rel='apple-touch-icon', sizes='180x80')
+    //link(href='assets/favicons/favicon-64x64.png', rel='icon', sizes='64x64', type='image/png')
+    //link(href='assets/favicons/favicon-48x48.png', rel='icon', sizes='48x48', type='image/png')
+    //link(href='assets/favicons/favicon-32x32.png', rel='icon', sizes='32x32', type='image/png')
+    //link(href='assets/favicons/favicon-16x16.png', rel='icon', sizes='16x16', type='image/png')
+    // <link href="favicons/site.webmanifest" rel="manifest" />
+    // Bulma
+    //link(rel='stylesheet', href='/assets/css/bulma.min.css')
+    // jQuery
+    // <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    // <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" ></script>
+    // dataTables
+    // <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/dataTables.bulma.min.css">
+    //
+      <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bulma.min.js"></script>
+    // App
+    //script(src='https://kit.fontawesome.com/a07277d3f2.js', crossorigin='anonymous')
+    //link(rel='stylesheet', href='http://213.133.110.214:6060/assets/style.css')
+    //script(type='text/javascript', src='assets/jquery-3.6.1.min.js')
+    //script(type='text/javascript', src='assets/func.js')
+    //script(src='https://d3js.org/d3.v4.js')
+    //script(src='https://d3js.org/d3-scale-chromatic.v1.min.js')
+
+
+  body
+    section.section__prev
+      .container
+        a.prev__link(href='/') 
+          img(src='assets/img/arrow-left.svg', alt='left')
+          
+          
+    section.section__login
+      .container
+        .box__form
+          h2.title Login
+          p.sub Login to manage your account
+        
+          form(method='POST', action='javascript:void(null);')
+            // Hidden Required Fields
+            
+            label(for="login") Email or phone number
+            .form_input
+              span.field
+                input.name#login(type='text', name='login', required='', value='', placeholder='Email or phone number')
+                
+            label(for="password") Password
+            .form_input
+              span.field
+                input.password#password(type='password', name='password', required='', value='', placeholder='Password')
+
+
+
+            button.blue(type='submit', name='send') Login
+            
+            
+          p.sub Do not have an account?
+            a(href='javascript:;') Sign up
+            
+
+
+
+    //script(src='https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js')
+
+
